@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="ru" id="ng-app" class="no-js lt-ie9 lt-ie8 lt-ie7">
+<![endif]-->
+<!--[if IE 7]>
+<html lang="ru" id="ng-app" class="no-js lt-ie9 lt-ie8">
+<![endif]-->
+<!--[if IE 8]>
+<html lang="ru" id="ng-app" class="no-js lt-ie9">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" id="ng-app" class="no-js">
+<!--<![endif]-->
+  <head>
+    <!-- Site Title-->
+    <title ng-bind="pageTitle"></title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Content-Language" content="en">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="assets/images/touch/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/logo.gif">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/logo.gif">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo.gif">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/logo.gif">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/logo.gif">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/logo.gif">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/logo.gif">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo.gif">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.min.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oxygen:400,300,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+    <!--<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">-->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/angular-loading-bar/build/loading-bar.min.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-notification/dist/angular-ui-notification.min.css">
+    <link rel="stylesheet" href="node_modules/ui-select/dist/select.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="assets/plugins/css/summernote.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="assets/plugins/css/fullcalendar.min.css">-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--[if lt IE 10]>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <script type="text/javascript" src="node_modules/es5-shim/es5-shim.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+  </head>
+  <!--
+      -----------------------------------------------------------+
+      <body> Helper Classes:
+      ---------------------------------------------------------------+
+      '.sb-l-o' - Sets Left Sidebar to "open"
+      '.sb-l-m' - Sets Left Sidebar to "minified"
+      '.sb-l-c' - Sets Left Sidebar to "closed"
+      '.sb-r-o' - Sets Right Sidebar to "open"
+      '.sb-r-c' - Sets Right Sidebar to "closed"
+      ---------------------------------------------------------------+
+      Example: <body class="example-page sb-l-o sb-r-c">
+      Results: Sidebar left Open, Sidebar right Closed
+      -------------------------------------------------------------
+  -->
+  <body ui-view="body" class="dashboard-page -external-page -external-alt -sb-l-c -sb-r-c">
+    <!-- Start: Main-->
+    <div id="main" class="animated -fadeIn">
+      <!-- Start: Header-->
+      <!-- Page Header-->
+      <!--
+      ---------------------------------------------------------------+
+      ".navbar" Helper Classes:
+      -------------------------------------------------------------------+
+      * Positioning Classes:
+      '.navbar-static-top' - Static top positioned navbar
+      '.navbar-static-top' - Fixed top positioned navbar
+      * Available Skin Classes:
+      .bg-dark    .bg-primary   .bg-success
+      .bg-info    .bg-warning   .bg-danger
+      .bg-alert   .bg-system
+      -------------------------------------------------------------------+
+      Example: <header class="navbar navbar-fixed-top bg-primary">
+      Results: Fixed top navbar with primary background
+      -----------------------------------------------------------------
+      -->
+      <header class="navbar navbar-shadow undefined" ui-view="header"></header>
+      <!-- Start: Sidebar-->
+      <!--
+      ---------------------------------------------------------------+
+      "#sidebar_left" Helper Classes:
+      -------------------------------------------------------------------+
+      * Positioning Classes:
+      '.affix' - Sets Sidebar Left to the fixed position
+      * Available Skin Classes:
+      .sidebar-dark (default no class needed)
+      .sidebar-light
+      .sidebar-light.light
+      -------------------------------------------------------------------+
+      Example: <aside id="sidebar_left" class="affix sidebar-light">
+      Results: Fixed Left Sidebar with light/white background
+      -----------------------------------------------------------------
+      -->
+      <!-- Start: Sidebar-->
+      <aside id="sidebar_left" class="nano nano-light affix" ui-view="left-sidebar"></aside>
+      <!-- Start: Content-Wrapper-->
+      <section id="content_wrapper">
+        <!-- Begin: Content-->
+        <section id="content" class="table-layout animated fadeIn" ui-view="main"></section>
+        <!-- Begin: Page Footer-->
+        <footer id="content-footer" class="affix">
+          <div class="row">
+            <div class="col-xs-6"><span class="footer-legal">&copy; 2016 EnergyMonitor</span></div>
+            <div class="col-xs-6 text-right">
+              <!--<span class="footer-meta">{{storageSpace.freeMegaBytes}} of<b> {{storageSpace.totalMegaBytes}} </b> Free</span>-->
+              <a href="#content" class="footer-return-top"><span class="fa fa-arrow-up"></span></a>
+            </div>
+          </div>
+        </footer>
+      </section>
+      <!-- Start: Right Sidebar-->
+      <aside id="sidebar_right" class="nano affix" ui-view="right-sidebar"></aside>
+    </div>
+    <!-- core scripts-->
+    <script src="assets/plugins/core.min.js"></script>
+    <!-- Theme Javascript-->
+    <script src="assets/js/utility/utility.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script type="text/javascript" src="node_modules/scriptjs/dist/script.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>

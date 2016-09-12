@@ -1,0 +1,14 @@
+<div class="center-block mt50 mw800">
+    <h1 class="error-title"> {{error.status}}!</h1>
+    <h2 class="error-subtitle">{{message}}</h2>
+</div>
+<div class="mid-section">
+    <div class="mid-content clearfix">
+        <pre>{{error.stack}}</pre>
+        {{# if headers }}
+            <code>{{headers}}</code>
+        {{else}}
+            <small>No headers are available</small>
+        {{/if}}
+    </div>
+</div>

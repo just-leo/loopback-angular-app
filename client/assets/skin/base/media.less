@@ -1,0 +1,77 @@
+/*==================================================
+  Media Groups
+==================================================== */
+
+.media {
+  color: @media-body-color;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+  line-height: 22px;
+
+  // Proper spacing between instances of .media
+  margin-top: 22px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.media-body-big{
+  font-size: 14px;
+}
+
+.media-right,
+.media > .pull-right {
+  padding-left: 10px;
+
+  .fa{
+    font-size: 18px;
+  }
+}
+
+.media-left,
+.media > .pull-left {
+  padding-right: 10px;
+}
+
+.media-left,
+.media-right,
+.media-body {
+  display: table-cell;
+  vertical-align: top;
+
+  img{
+    border-radius: 2px;
+  }
+}
+
+.media-middle {
+  vertical-align: middle;
+}
+
+.media-bottom {
+  vertical-align: bottom;
+}
+
+// Reset margins on headings for tighter default spacing
+.media-heading {
+  color: @media-heading-color;
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  font-size: 14px;
+
+  small{
+    color: #212121;
+  }
+}
+
+// Media list variation
+//
+// Undo default ul/ol styles
+.media-list {
+  padding-left: 0;
+  list-style: none;
+}

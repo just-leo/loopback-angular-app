@@ -1,0 +1,52 @@
+<div class="navbar-branding"><a href="/" class="navbar-brand">EnergyMonitor</a><span id="toggle_sidemenu_l" class="fa fa-bars"></span></div>
+<ul class="nav navbar-nav navbar-left">
+  <li class="header-link active"><a href="/">Dashboard</a></li>
+  <li class="header-link veil reveal-xs-block"><a href="/documentation">Documentation</a></li>
+  <li class="navbar-search">
+    <form role="search" class="navbar-form navbar-left navbar-search alt">
+      <div class="form-group"><span class="icon fa fa-search"></span>
+        <input type="text" placeholder="Search..." class="form-control" ng-model="query" ng-change="search()">
+      </div>
+    </form><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="veil reveal-md-block btn btn-info dropdown-toggle">Dropdown <span class="caret caret-tp"></span></a>
+    <ul role="menu" class="dropdown-menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+  </li>
+  <li class="admin-dropdown">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown menu-merge"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="/assets/img/avatars/1.jpg" alt="avatar" class="veil reveal-sm-inline-block mw64 br64"><span class="hidden-xs pl15"> Mr.Guest</span> <span class="caret caret-tp"></span></a>
+        <ul role="menu" class="dropdown-menu list-group dropdown-persist w250">
+          <li class="dropdown-header clearfix">
+            <div class="pull-left ml10">
+              <select id="user-status">
+                <optgroup label="Current Status:">
+                  <option value="1-1">Away</option>
+                  <option value="1-2">Offline</option>
+                  <option value="1-3" selected="selected">Online</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="pull-right mr10">
+              <select id="user-role">
+                <optgroup label="Logged in As:">
+                  <option value="1-1">Client</option>
+                  <option value="1-2">Editor</option>
+                  <option value="1-3" selected="selected">Admin</option>
+                </optgroup>
+              </select>
+            </div>
+          </li>
+          <li class="list-group-item"><a href="#" class="animated animated-short fadeInUp"><span class="fa fa-envelope"></span> Messages<span class="label label-warning">2</span></a></li>
+          <li class="list-group-item"><a href="#" class="animated animated-short fadeInUp"><span class="fa fa-user"></span> Friends<span class="label label-warning">6</span></a></li>
+          <li class="list-group-item"><a href="#" class="animated animated-short fadeInUp"><span class="fa fa-bell"></span> Notifications</a></li>
+          <li class="list-group-item"><a href="#" class="animated animated-short fadeInUp"><span class="fa fa-gear"></span> Settings</a></li>
+          <li class="dropdown-footer"><a href="/logout"><span class="fa fa-power-off pr5"></span> Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>

@@ -1,0 +1,58 @@
+// Alerts
+
+.alert-variant(@color) {
+  background-color: #fff;
+
+  h3,
+  &,
+  .alert-link{
+    color: @color;
+  }
+
+  &.alert-border-right { border-right-style: solid; border-right-color: darken(@color, 13%); }
+  &.alert-border-top { border-top-style: solid; border-top-color: darken(@color, 13%); }
+  &.alert-border-bottom { border-bottom-style: solid; border-bottom-color: darken(@color, 13%); }
+  &.alert-border-left { border-left-style: solid; border-left-color: darken(@color, 13%); }
+
+  // Color shade variants
+  &.light {
+    background-color: lighten(@color, 15%);
+    color: #fff;
+
+    .alert-link {
+      color: #fff;
+    }
+  }
+  &.dark {
+    background-color: darken(@color, 3%);
+    color: #fff;
+
+    .alert-link {
+      color: #fff;
+    }
+  }
+  &.pastel {
+    color: darken(@color, 15%);
+    background-color: lighten(@color, 30%);
+    border-color: rgba(0,0,0,0.1);
+
+    // Link color
+    .alert-link {
+      color: darken(@color, 15%);
+    }
+
+    // Border settings
+    &.alert-micro {
+      border-color: lighten(@color, 10%);
+    }
+
+    // Adjust close link position
+    .close {
+      color: darken(@color, 25%);
+      &:hover {
+        color: darken(@color, 45%);
+      }
+    }
+  }
+}
+

@@ -1,0 +1,79 @@
+// Contextual backgrounds
+
+.navbar-variant(@color, @text-color: #fff) {
+  background-color: @color;
+
+  .nav > li.header-link.active > a{
+    background: none;
+    border-bottom: 3px solid @text-color;
+  }
+
+  .nav > li.header-link > a:hover{
+    border-bottom: 3px solid @text-color;
+  }
+
+  .nav > li + li{
+    border-left: 1px solid @text-color;
+  }
+
+  .nav.navbar-nav li.navbar-search{
+    .icon{
+      display: none;
+    }
+
+    .form-control{
+      .placeholder(@text-color);
+      color: @text-color;
+    }
+
+    .btn.dropdown-toggle{
+      background-color: @color;
+      color: @text-color;
+      box-shadow: 0 1px 4px 0 @color;
+    }
+    .open .dropdown-toggle:focus {
+      background-color: @color;
+      color: @text-color;
+    }
+  }
+
+  // Navbar active nav item background color
+  .nav > li.open > a:not(.btn),
+  .nav > li:hover > a:not(.btn),
+  .nav > li:focus > a:not(.btn),
+  .nav > li.active > a:not(.btn),
+  .nav > li > a:not(.btn):hover,
+  .nav > li > a:not(.btn):focus {
+      color: @text-color;
+      //background-color: darken(@color, 6%);
+  }
+  .nav > li.header-link > a,
+  .navbar-branding .navbar-brand,
+  #toggle_sidemenu_l, #toggle_sidemenu_t,
+  #toggle_sidemenu_l,
+  #toggle_sidemenu_l:hover,
+  #toggle_sidemenu_l:focus,
+  li.admin-dropdown > ul > li > a.dropdown-toggle{
+    color: @text-color;
+  }
+
+    // Top border color on dropdown menus
+  .nav > li.dropdown.open .dropdown-menu,
+  .nav > li.dropdown .open .dropdown-menu {
+    border-top-color: @color; 
+    &:after {
+       border-bottom-color: @color;
+    }
+
+  }
+  .nav > li.dropdown.open .dropdown-menu:after,
+  .nav > li.dropdown .open .dropdown-menu:after {
+    border-bottom-color: @color;
+  }
+
+  // Navbar user menu multiselect dropdown - active item bg
+  .nav > li .dropdown-toggle {
+    .dropdown-variant(@color); 
+  }
+
+}

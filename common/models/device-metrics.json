@@ -1,0 +1,38 @@
+{
+  "name": "deviceMetrics",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "deviceId": {
+      "type": "string",
+      "required": true
+    },
+    "createdAt": {
+      "type": "number",
+      "required": true
+    },
+    "pmv": {
+      "type": "number",
+      "required": true
+    },
+    "pmc": {
+      "type": "number",
+      "required": true
+    },
+    "pmw": {
+      "type": "number",
+      "required": true
+    },
+    "pmwh": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

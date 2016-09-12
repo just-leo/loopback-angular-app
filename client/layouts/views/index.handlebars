@@ -1,0 +1,79 @@
+<section id="content" class="table-layout animated fadeIn">
+    <!-- begin: .tray-center-->
+    <div class="tray tray-center">
+        <div class="row">
+            <div class="col-md-9">
+                <!-- Admin-panels-->
+                <div class="admin-panels">
+                    <div class="row">
+                        <div class="col-md-12 admin-grid">
+                            <div id="p01" data-panel-title="false" class="panel sort-disable">
+                                <div class="panel-heading of-v br-b-n pl25 pr25"><span class="pull-sm-left">Revenue</span><span class="pull-sm-left text-muted ml10">Monthly Stats</span>
+                                    <div class="mt-10 mt-sm-0 pull-sm-right veil reveal-sm-block">
+                                        <div class="btn-group">
+                                            <button type="button" data-toggle="dropdown" class="custom-dropdown btn btn-xs btn-info dropdown-toggle">Filter range<span class="caret ml15"></span></button>
+                                            <ul role="menu" class="dropdown-menu">
+                                                <li><a id="ecommerce_chart2-new-data" href="#">Type 1</a></li>
+                                                <li><a id="ecommerce_chart2-new-data-2" href="#">Type 2</a></li>
+                                                <li><a id="ecommerce_chart2-new-data-3" href="#">Type 3</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body pn">
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active p15">
+                                            <!-- Chart Column-->
+                                            <div class="pln">
+                                                {{#each configs}}
+                                                    <div id="{{{chart.renderTo}}}"></div>
+                                                {{/each}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-sm-4 col-md-12">
+                        <div class="panel panel-tile text-center br-a br-grey">
+                            <div class="panel-body pb15"><span class="icon icon-default fa fa-male"></span>
+                                <h1 class="fs36 mt20 mbn">1,426</h1>
+                                <h6 class="mt10 text-dark">NEW ORDERS</h6>
+                            </div>
+                            <div class="panel-footer br-t p8"><span class="text-silver"> 3% Increase 1w ago</span></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-12">
+                        <div class="panel panel-tile text-center br-a br-grey">
+                            <div class="panel-body pb15"><span class="icon icon-default fa fa-database"></span>
+                                <h1 class="fs36 mt20 mbn">63,262</h1>
+                                <h6 class="mt10 text-dark">TOTAL SALES GROSS</h6>
+                            </div>
+                            <div class="panel-footer br-t p8"><span class="text-silver"> 2.7% Increase 1w ago</span></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-12">
+                        <div class="panel panel-tile text-center br-a br-grey">
+                            <div class="panel-body pb15"><span class="icon icon-default fa fa-shopping-cart"></span>
+                                <h1 class="fs36 mt20 mbn">248</h1>
+                                <h6 class="mt10 text-dark">PENDING SHIPMENTS</h6>
+                            </div>
+                            <div class="panel-footer br-t p8"><span class="text-silver"> 1% Increase 1w ago</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- begin: .tray-right-->
+    {{>tray_right}}
+</section>
+<script src="/highcharts/highcharts.js"></script>
+<script>
+    {{{highcharts configs}}}
+</script>

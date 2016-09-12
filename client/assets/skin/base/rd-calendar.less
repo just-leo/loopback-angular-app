@@ -1,0 +1,224 @@
+/*
+* @subsection   RD Calendar
+*
+*
+* @author       Evgeniy Gusarov
+* @see          https://ua.linkedin.com/pub/evgeniy-gusarov/8a/a40/54a
+* @version      1.0.0
+*/
+
+.rd-calendar {
+
+  &.show-events {
+
+  }
+}
+
+
+// Today and year
+.rdc-today_day,
+.rdc-fullyear{
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.rdc-today_day,
+.rdc-fullyear,
+.rdc-today_month,
+.rdc-today_date{
+  text-shadow: 1px 0 2px rgba(0,0,0,.3);
+}
+
+.rdc-today_month,
+.rdc-today_date{
+  letter-spacing: 0.1em;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.rdc-today_date{
+
+}
+
+.rdc-today_month{
+
+}
+
+.rdc-today_fullyear{
+
+}
+
+
+// Panel
+.rdc-panel{
+  padding: 20px;
+  background: url("../../../img/plugins/calendar-bg.jpg") no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+
+
+// Controls
+.rdc-next, .rdc-prev, .rdc-events_close{
+  display: inline-block;
+  border-radius: 50%;
+  text-align: center;
+  width: 34px;
+  height: 34px;
+  background-color: #fff;
+  color: #35a7ff;
+  font: 400 22px/34px "FontAwesome";
+  cursor: pointer;
+  transition: .3s all ease;
+  box-shadow: 1px 0 4px 0 rgba(33,33,33,.6);
+  margin-left: 10px;
+
+  &:hover {
+    background-color: #35a7ff;
+    color: #fff;
+  }
+}
+
+.rdc-next{
+  &:before {
+    content: '\f105';
+  }
+}
+
+.rdc-prev{
+  &:before {
+    content: '\f104';
+  }
+}
+
+.rdc-events_close{
+  &:before {
+    content: '\f00d';
+  }
+}
+
+// Events
+.rdc-events{
+  opacity: 0;
+  visibility: hidden;
+  transition: .4s all ease-in-out;
+
+  .rd-calendar.show-events & {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+
+
+.rdc-event{
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+// Table
+.rdc-table{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  table {
+    width: 100%;
+    border-spacing: 4px;
+    border-collapse: separate;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 380px;
+
+    tr:first-child{
+      position: relative;
+      transform: translateY(-5px);
+
+      &:after{
+        height: 57px;
+        content: "";
+        position: absolute;
+        left: -100%;
+        right: -100%;
+        top: 0;
+        background-color: #377fbe;
+      }
+    }
+  }
+
+  td {
+    position: relative;
+    padding-bottom: 13.25%;
+  }
+}
+
+.rdc-month{
+
+}
+
+.rdc-fullyear{
+
+}
+
+.rdc-table_day{
+  text-align: center;
+  color: #fff;
+  padding: 19px 0 45px;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  width: 14.28571428571429%;
+}
+
+.rdc-table_date{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: #212121;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.rdc-table_today{
+  color: #fff;
+
+  &:after{
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    transform: translateY(~"calc(-50% + 10px)");
+    background-color: #35a7ff;
+    box-shadow: 1px 0 4px 0 rgba(53, 167, 255, .6);
+    border-radius: 50%;
+    z-index: -1;
+  }
+}
+
+.rdc-table_event{
+  cursor: pointer;
+  transition: .3s all ease;
+
+  &:hover{
+    color: #fff;
+    background-color: #35a7ff;
+  }
+}
+
+.rdc-table_next,
+.rdc-table_prev{
+  color: #bdbdbd;
+}

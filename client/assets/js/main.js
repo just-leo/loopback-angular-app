@@ -23,8 +23,6 @@ var Core = function(options) {
   // Calculate Height for inner content elements
   var contentHeight = windowH - (navbarH + topbarH);
 
-
-
   // SideMenu Functions
   var runSideMenu = function(options) {
 
@@ -747,7 +745,7 @@ var Core = function(options) {
   }
 }();
 
-// Global Library of Theme colors for Javascript plug and play use  
+// Global Library of Theme colors for Javascript plug and play use
 var bgPrimary = '#ffe74c',
     bgPrimaryL = '#ffec70',
     bgPrimaryLr = '#fff3a5',

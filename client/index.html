@@ -67,7 +67,7 @@
   -->
   <body ui-view="body" class="dashboard-page -external-page -external-alt -sb-l-c -sb-r-c">
     <!-- Start: Main-->
-    <div id="main" class="animated -fadeIn">
+    <div id="main" class="animated fadeIn">
       <!-- Start: Header-->
       <!-- Page Header-->
       <!--
@@ -76,7 +76,7 @@
       -------------------------------------------------------------------+
       * Positioning Classes:
       '.navbar-static-top' - Static top positioned navbar
-      '.navbar-static-top' - Fixed top positioned navbar
+      '.navbar-fixed-top' - Fixed top positioned navbar
       * Available Skin Classes:
       .bg-dark    .bg-primary   .bg-success
       .bg-info    .bg-warning   .bg-danger
@@ -86,7 +86,7 @@
       Results: Fixed top navbar with primary background
       -----------------------------------------------------------------
       -->
-      <header class="navbar navbar-shadow undefined" ui-view="header"></header>
+      <header class="navbar navbar-shadow navbar-fixed-top" ui-view="header"></header>
       <!-- Start: Sidebar-->
       <!--
       ---------------------------------------------------------------+
@@ -159,10 +159,10 @@
       <aside id="sidebar_right" class="nano affix" ui-view="right-sidebar"></aside>
     </div>
     <!-- core scripts-->
-    <script src="assets/plugins/core.min.js"></script>
+    <!--<script src="assets/plugins/core.min.js"></script>-->
     <!-- Theme Javascript-->
-    <script src="assets/js/utility/utility.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!--<script src="assets/js/utility/utility.js"></script>-->
+    <!--<script src="assets/js/main.js"></script>-->
     <script type="text/javascript" src="node_modules/scriptjs/dist/script.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </body>

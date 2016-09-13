@@ -50,7 +50,8 @@ $script([
 			'core/services/app.core.auth.interceptor.js',
 			'config/app.config.api.js',
 			'config/app.config.autoload.js',
-			'config/app.config.routes.js'
+			'config/app.config.routes.js',
+      'assets/plugins/core.min.js'
 		], 'app')
 
 	})
@@ -68,7 +69,6 @@ $script
 	})
 	.ready('app', function() {
 		console.info(app.workingTime(), 'Loading app...')
-
 		$script.order([
 			'config/app.config.js',
 			'core/app.core.module.js'

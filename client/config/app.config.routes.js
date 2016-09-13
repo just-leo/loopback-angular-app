@@ -16,7 +16,7 @@ angular
 		function($stateProvider, $urlRouterProvider, STATES, DEFAULT_ROUTE_URL, DEFAULT_URL) {
 			// Prevent router from automatic state resolving
 			$urlRouterProvider.deferIntercept();
-      console.info('router deferred');
+
 			// when there is an empty route, redirect to /
 			$urlRouterProvider.when('', DEFAULT_ROUTE_URL);
 			$urlRouterProvider.when('/welcome/success', function($window) {
@@ -58,7 +58,15 @@ angular
 							return api.auth;
 						}
 					},
-					pageTitle: 'Главная страница'
+					pageTitle: 'Главная страница',
+          onEnter: function($rootScope) {
+            var hide = $rootScope.$on('$viewContentAnimationEnded', function() {
+              hide()
+              $script(['assets/js/utility/utility.js','assets/js/main.js'], function() {
+                Core.init();
+              })
+            })
+          }
 				})
         .state({
 					name: 'root.main',

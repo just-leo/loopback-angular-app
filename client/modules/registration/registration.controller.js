@@ -1,18 +1,6 @@
 angular.module('registration')
     .controller('RegistrationController',
-    function RegistrationController($scope, currentUser, groups, defaultGroup, authApi, cardsApi, card, AuthService, STATES, $sce, $state, Notification, cfpLoadingBar) {
-
-        $scope.cardNumber = card.ShortID;
-
-        $scope.groups = groups;
-        $scope.model = {
-            group: defaultGroup
-        }
-
-        $scope.selectGroup = function($item, $model) {
-            //update model
-            card.GroupID = $scope.model.group.id;
-        }
+    function RegistrationController($scope, currentUser, AuthService, STATES, $sce, $state, Notification, cfpLoadingBar) {
 
         $scope.submit = function() {
             cfpLoadingBar.start();
@@ -54,8 +42,4 @@ angular.module('registration')
             return $sce.trustAsHtml(value);
         }
 
-        if(!currentUser.ServiceCard) {
-            card.GroupID = defaultGroup.ID
-            $scope.submit()
-        }
     })

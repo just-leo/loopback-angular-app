@@ -1,40 +1,67 @@
-<!-- http://bootsnipp.com/snippets/featured/custom-login-registration-amp-forgot-password -->
-<div class="row">
-    <div class="col-md-12">
-        <h2 class="sub-header">Карта №{{::cardNumber}}</h2>
-        <div class="text-center">
-            <!--<div class="logo">Регистрация новой карты</div>-->
-            <!--<h2 class="sub-header">{{cardNumber}}</h2>-->
-            <!-- Main Form -->
-            <div class="card-form-1">
-                <form id="forgot-password-form" class="text-center">
-                    <div class="etc-login-form">
-                        <p>Выберите группу и нажмите продолжить</p>
-                    </div>
-                    <div class="login-form-main-message success"></div>
-                    <div class="main-login-form">
-                        <div class="login-group">
-                            <div class="form-group">
-                                <ui-select ng-model="model.group" on-select="selectGroup($item, $model)" theme="bootstrap" search-enabled="false">
-                                    <ui-select-match allow-clear="false" placeholder="Выберите группу">
-                                        <span ng-bind="$select.selected.Name"></span>
-                                    </ui-select-match>
-                                    <ui-select-choices repeat="group in (groups | filter: $select.search) track by group.id">
-                                        <div ng-bind-html="trustAsHtml(group.Name | highlight: $select.search)"></div>
-                                        <small ng-bind-html="trustAsHtml(group.Description | highlight: $select.search)"></small>
-                                    </ui-select-choices>
-                                </ui-select>
-                            </div>
-                        </div>
-                        <button type="submit" class="login-button" ng-click="submit()"><i class="fa fa-chevron-right"></i></button>
-                    </div>
-                    <div class="etc-login-form">
-                        <p>Чтобы вернуться назад <a href="#" ng-click="goBack()">нажмите здесь</a></p>
-                    </div>
-                </form>
-            </div>
-            <!-- end:Main Form -->
-        </div>
-
+<div id="login1" style="margin-top: 3%;" class="admin-form theme-info mw700">
+  <div class="row mb15 table-layout">
+    <div class="col-xs-6 va-m pln"><a href="/" title="Return to Dashboard"><img src="/assets/img/logos/logo_white.png" title="Logo" class="img-responsive w250"></a></div>
+    <div class="col-xs-6 text-right va-b pr5">
+      <div class="login-links">
+        <a ui-sref="external.layout.login" ui-sref-active="active" title="Sign In">Sign In</a> <span class="text-white">&#124;</span> <a ui-sref="external.layout.registration" ui-sref-active="active" title="Register">Register</a>
+      </div>
     </div>
+  </div>
+  <div class="panel panel-info mt10 br-n">
+    <div class="panel-heading heading-border bg-white">
+      <div class="section row mn">
+        <div class="col-sm-4"><a href="#" class="button btn-social facebook span-left mr5 btn-block"><span><i class="fa fa-facebook"></i></span>Facebook</a></div>
+        <div class="col-sm-4"><a href="#" class="button btn-social twitter span-left mr5 btn-block"><span><i class="fa fa-twitter"></i></span>Twitter</a></div>
+        <div class="col-sm-4"><a href="#" class="button btn-social googleplus span-left btn-block"><span><i class="fa fa-google-plus"></i></span>Google+</a></div>
+      </div>
+    </div>
+    <form id="account2" method="post" action="/">
+      <div class="panel-body p25 bg-light">
+        <div class="section-divider mt10 mb40"><span>Set up your account</span></div>
+        <!-- .section-divider-->
+        <div class="section row">
+          <div class="col-md-6">
+            <label for="firstname" class="field prepend-icon">
+              <input id="firstname" type="text" name="firstname" placeholder="First name..." class="gui-input">
+              <label for="firstname" class="field-icon"><i class="fa fa-user"></i></label>
+            </label>
+          </div>
+          <div class="col-md-6">
+            <label for="lastname" class="field prepend-icon">
+              <input id="lastname" type="text" name="lastname" placeholder="Last name..." class="gui-input">
+              <label for="lastname" class="field-icon"><i class="fa fa-user"></i></label>
+            </label>
+          </div>
+        </div>
+        <div class="section">
+          <label for="email" class="field prepend-icon">
+            <input id="email" type="email" name="email" placeholder="Email address" class="gui-input">
+            <label for="email" class="field-icon"><i class="fa fa-envelope"></i></label>
+          </label>
+        </div>
+        <div class="section">
+          <label for="password" class="field prepend-icon">
+            <input id="password" type="password" name="password" placeholder="Create a password" class="gui-input">
+            <label for="password" class="field-icon"><i class="fa fa-unlock-alt"></i></label>
+          </label>
+        </div>
+        <div class="section">
+          <label for="confirmPassword" class="field prepend-icon">
+            <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Retype your password" class="gui-input">
+            <label for="confirmPassword" class="field-icon"><i class="fa fa-lock"></i></label>
+          </label>
+        </div>
+        <div class="section-divider mv40"><span>Review the Terms</span></div>
+        <!-- .section-divider-->
+        <div class="section mb15">
+          <label class="option block mt15">
+            <input type="checkbox" name="terms"><span class="checkbox"></span>I agree to the<a href="#" class="theme-link"> terms of use.</a>
+          </label>
+        </div>
+      </div>
+      <div class="panel-footer clearfix">
+        <button type="submit" class="button btn-primary pull-right">Create Account</button>
+      </div>
+    </form>
+  </div>
 </div>

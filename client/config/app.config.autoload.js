@@ -14,6 +14,20 @@ angular
 				'modules/header/header.controller.js'
 			]
 		},
+    {
+      name: 'registration',
+      serie: true,
+      files: [
+        'modules/registration/registration.module.js',
+        'modules/registration/registration.controller.js'
+      ]
+    },
+    {
+      name: 'login',
+      files: [
+        'modules/login/login.module.js'
+      ]
+    },
 		{
 			name: 'welcome',
 			files: [

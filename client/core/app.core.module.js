@@ -163,32 +163,36 @@ angular
 						PermRoleStore.defineRole('top', topPermissions)
 					case 'administrator':
 						var adminPermissions = [
-							'root.main.cards',
-							'root.main.objects',
-							'root.main.registration'
 						]
 						PermPermissionStore.defineManyPermissions(adminPermissions, defaultPermissionCheck)
 						PermRoleStore.defineRole('administrator', adminPermissions)
 					case 'paymaster':
 						var paymasterPermissions = [
-							'root.aside.main.account'
 						]
 						PermPermissionStore.defineManyPermissions(paymasterPermissions, defaultPermissionCheck)
 						PermRoleStore.defineRole('paymaster', paymasterPermissions)
 					default:
 						PermPermissionStore.defineManyPermissions([
-							'root.main.logs',
-							'root.main',
-							'logout'
+              'external.layout',
+              'external.layout.registration',
+              'external.layout.login',
+              'dashboard.layout',
+              'dashboard.layout.default',
+              'dashboard.layout.404',
+              'dashboard.layout.logs'
 						], defaultPermissionCheck)
 				}
 
 			} else {
 				console.log('user permissions cleared')
         PermPermissionStore.defineManyPermissions([
-          'root.main.logs',
-          'root.main',
-          'logout'
+          'external.layout',
+          'external.layout.registration',
+          'external.layout.login',
+          'dashboard.layout',
+          'dashboard.layout.default',
+          'dashboard.layout.404',
+          'dashboard.layout.logs'
         ], defaultPermissionCheck)
 			}
 			PermRoleStore.defineRole('AUTHORIZED', defaultRoleCheck)
@@ -229,6 +233,7 @@ angular
 		$rootScope.$on('$stateChangePermissionAccepted', complete)
 		$rootScope.$on('$stateChangeError', complete)
 		$rootScope.$on('$stateChangePermissionDenied', function() {
+      arguments
       debugger
 			complete()
 			$rootScope.$emit('auth.not.authorized')

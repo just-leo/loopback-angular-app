@@ -5,11 +5,11 @@ angular
 	.constant('DEFAULT_URL', '/')
 	.constant('DEFAULT_ROUTE_URL', '/')
 	.constant('STATES', {
-		LOGINPAGE: 'root.main',
-		REGISTRATION: 'root.main.registration',
-		DEFAULT: 'root.main',
-		MAINPAGE: 'root.main',
-		ERROR_NOTFOUND: 'root.main.404'
+		LOGINPAGE: 'external.layout.login',
+		REGISTRATION: 'external.layout.registration',
+		DEFAULT: 'dashboard.layout.default',
+		MAINPAGE: 'dashboard.layout.default',
+		ERROR_NOTFOUND: 'dashboard.layout.404'
 	})
 	.config([
 		'$stateProvider', '$urlRouterProvider', 'STATES', 'DEFAULT_ROUTE_URL', 'DEFAULT_URL',
@@ -29,18 +29,88 @@ angular
 			});
 
 			$stateProvider
-				/**
-				* Apply header that used on all pages
-				*/
+        .state({
+          name: 'external',
+          abstract: true,
+          templateUrl: 'layouts/external.html'
+        })
+        .state({
+          name: 'external.layout',
+          abstract: true
+        })
+        .state({
+          name: 'external.layout.registration',
+          url: '/registration',
+					pageTitle: 'Регистрация',
+          views: {
+            'content@external': {
+              templateUrl: 'modules/registration/registration.html',
+              controller: 'RegistrationController',
+              controllerAs: 'controller'
+            }
+          },
+          resolve: {
+            _loadRegModule: function($ocLazyLoad) {
+              return $ocLazyLoad.load('registration')
+            },
+            currentUser: function($rootScope) {
+              return $rootScope.currentUser
+            }
+          },
+          //onEnter: function() {
+          //  CanvasBG.init({
+          //    Loc: {
+          //      x: window.innerWidth / 2.1,
+          //      y: window.innerHeight / 4.2
+          //    },
+          //  })
+          //},
+          data: {
+            permissions: {
+              only: ['external.layout.registration']
+            }
+          },
+          authenticate: false
+        })
+        .state({
+          name: 'external.layout.login',
+          url: '/login',
+          pageTitle: 'Логин',
+          views: {
+            'content@external': {
+              templateUrl: 'modules/login/login.html',
+              controllerAs: 'controller'
+            }
+          },
+          resolve: {
+            _loadRegModule: function($ocLazyLoad) {
+              return $ocLazyLoad.load('login')
+            },
+            currentUser: function($rootScope) {
+              return $rootScope.currentUser
+            }
+          },
+          data: {
+            permissions: {
+              only: ['external.layout.login']
+            }
+          },
+          authenticate: false
+        })
 				.state({
-					name: 'root',
+					name: 'dashboard',
 					abstract: true,
-					views: {
-						header: {
-							templateUrl: 'modules/header/header.view.html',
-							controller: 'HeaderController',
-							controllerAs: 'controller'
-						},
+          templateUrl: 'layouts/dashboard.html'
+				})
+        .state({
+          name: 'dashboard.layout',
+          abstract: true,
+          views: {
+            header: {
+              templateUrl: 'modules/header/header.view.html',
+              controller: 'HeaderController',
+              controllerAs: 'controller'
+            },
             'left-sidebar': {
               templateUrl: 'modules/left-sidebar/sidebar-left.html',
               controllerAs: 'controller'
@@ -49,16 +119,16 @@ angular
               templateUrl: 'modules/right-sidebar/sidebar-right.html',
               controllerAs: 'controller'
             }
-					},
-					resolve: {
-						_loadHeaderModule: function($ocLazyLoad) {
-							return $ocLazyLoad.load('header')
-						},
-						authApi: function(api) {
-							return api.auth;
-						}
-					},
-					pageTitle: 'Главная страница',
+          },
+          resolve: {
+            _loadHeaderModule: function($ocLazyLoad) {
+              return $ocLazyLoad.load('header')
+            },
+            authApi: function(api) {
+              return api.auth;
+            }
+          },
+          pageTitle: 'Главная страница',
           onEnter: function($rootScope) {
             var hide = $rootScope.$on('$viewContentAnimationEnded', function() {
               hide()
@@ -67,12 +137,12 @@ angular
               })
             })
           }
-				})
+        })
         .state({
-					name: 'root.main',
+					name: 'dashboard.layout.default',
 					url: '/',
 					views: {
-						'main@': {
+						'content@dashboard': {
 							templateUrl: 'modules/default/default.html',
               controller: 'DefaultController',
 							controllerAs: 'controller'
@@ -85,63 +155,31 @@ angular
 					},
           data: {
             permissions: {
-              only: ['root.main']
+              only: ['dashboard.layout.default']
             }
           },
-					pageTitle: 'Добро пожаловать'
+					pageTitle: 'Добро пожаловать',
+          authenticate: false
 				})
 
 				//Error page
 				.state({
-					name: 'root.main.404',
+					name: 'dashboard.layout.404',
 					url: '/404',
 					pageTitle: 'Страница не найдена',
 					views: {
-            'main@': {
+            content: {
 							templateUrl: 'layouts/404.html'
 						}
 					},
 					authenticate: true
 				})
 				.state({
-					name: 'root.main.registration',
-					url: '/registration',
-					pageTitle: 'Регистрация',
-					views: {
-						content: {
-							templateUrl: 'modules/registration/registration.html',
-							controller: 'RegistrationController',
-							controllerAs: 'controller'
-						}
-					},
-					onEnter: function(localStorageService, $rootScope) {
-						if(true) {
-						} else {
-							console.info('Redirect back...')
-							$rootScope.goBack()
-						}
-					},
-					resolve: {
-						_loadRegModule: function($ocLazyLoad) {
-							return $ocLazyLoad.load('registration')
-						},
-						currentUser: function($rootScope) {
-							return $rootScope.currentUser
-						}
-					},
-					data: {
-						permissions: {
-							only: ['root.main.registration']
-						}
-					},
-					authenticate: true
-				})
-				.state({
-					name: 'root.aside.main.logs',
+					name: 'dashboard.layout.logs',
 					url: '/logs',
 					pageTitle: 'Системный журнал',
 					views: {
-						'content': {
+						content: {
 							templateUrl: 'modules/logs/logs-list.html',
 							controller: 'LogListController',
 							controllerAs: 'controller'
@@ -157,7 +195,7 @@ angular
 					},
 					data: {
 						permissions: {
-							only: ['root.aside.main.logs']
+							only: ['dashboard.layout.logs']
 						}
 					},
 					authenticate: true

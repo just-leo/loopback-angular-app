@@ -4,7 +4,7 @@ angular.module('registration')
 
         $scope.submit = function() {
             cfpLoadingBar.start();
-            authApi.registration(card).then(
+            AuthService.registration(card).then(
                 function(resp){
                     cfpLoadingBar.complete()
                     $state.go('root.aside.main.account', {CardID: resp.id})//card info

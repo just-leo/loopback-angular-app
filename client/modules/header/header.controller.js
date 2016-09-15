@@ -3,13 +3,10 @@
 angular.module('header')
 	.controller('HeaderController',
 		function HeaderController(
-			$rootScope,
 			$scope,
 			AuthService,
 			$state,
-			authApi,
 			STATES,
-			$interval,
 			cfpLoadingBar,
 			AUTH_EVENTS) {
 

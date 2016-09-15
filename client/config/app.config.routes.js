@@ -79,6 +79,7 @@ angular
           views: {
             'content@external': {
               templateUrl: 'modules/login/login.html',
+              controller: 'LoginController',
               controllerAs: 'controller'
             }
           },
@@ -123,9 +124,6 @@ angular
           resolve: {
             _loadHeaderModule: function($ocLazyLoad) {
               return $ocLazyLoad.load('header')
-            },
-            authApi: function(api) {
-              return api.auth;
             }
           },
           pageTitle: 'Главная страница',
@@ -159,7 +157,7 @@ angular
             }
           },
 					pageTitle: 'Добро пожаловать',
-          authenticate: false
+          authenticate: true
 				})
 
 				//Error page
@@ -178,21 +176,6 @@ angular
 					name: 'dashboard.layout.logs',
 					url: '/logs',
 					pageTitle: 'Системный журнал',
-					views: {
-						content: {
-							templateUrl: 'modules/logs/logs-list.html',
-							controller: 'LogListController',
-							controllerAs: 'controller'
-						}
-					},
-					resolve: {
-						_loadLogsModule: function($ocLazyLoad) {
-							return $ocLazyLoad.load('logs')
-						},
-						logsApi: function(api) {
-							return api.log;
-						}
-					},
 					data: {
 						permissions: {
 							only: ['dashboard.layout.logs']

@@ -1,17 +1,18 @@
 angular
-    .module('default', ['ui-notification', 'angularMoment'])
-    .value('loginRedirectState', 'root.main.success')
-    .controller('DefaultController', function DefaultController($scope, Notification, $state, STATES, $modal) {
+    .module('default', ['ui-notification', 'angularMoment', 'lbServices'])
+    .controller('DefaultController', function DefaultController($scope, Notification, $state, STATES, EnergyMonitor) {
         $scope.query = '';
         $scope.cardList = [];
-        $scope.search = function() {
-            cardsApi.search({q: $scope.query}).then(
-                function(resource){
-                    $scope.cardList = resource
-                },
-                function(err){
-                    $scope.cardList = []
-                }
-            )
+        $scope.search = function () {
+
         }
+
+        this.$data = EnergyMonitor.find({filter: {limit: 5}}).$promise.then(
+            function (result) {
+              debugger
+            },
+            function (error) {
+
+            }
+        )
     })

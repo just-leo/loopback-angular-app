@@ -3,14 +3,12 @@
 angular
 	.module('app.core', [
 		'ngAnimate',
-		'app.core.api',
-		'app.core.auth',
+		'app.core.interceptor',
 		'app.config',
 		'cfp.loadingBar',
 		'ui-notification',
 		'angularMoment',
 		'mgcrea.ngStrap.modal',//only modal
-		//'angular-iscroll',
 	])
 	.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
 		cfpLoadingBarProvider.includeBar = true;
@@ -58,7 +56,7 @@ angular
 			}
 		})
 	})
-	.run(function($urlRouter, PermRoleStore, PermPermissionStore, api, $rootScope, AuthService, $state, STATES, cfpLoadingBar, Notification, $log) {
+	.run(function($urlRouter, PermRoleStore, PermPermissionStore, User, $rootScope, AuthService, $state, STATES, cfpLoadingBar, Notification, $log) {
 		var start = cfpLoadingBar.start;
 		var complete = function() {
 			if(cfpLoadingBar.status() > 0) {
@@ -83,7 +81,7 @@ angular
 		$rootScope.$on('auth.not.authorized', function(e){
 			//Use this exception when a user has been authenticated but is not allowed to perform the requested action
 			Notification.warning('У вас недостаточно прав для выполнения данного действия').then(function() {
-				//api.auth.check()
+        User.isAuthenticated()
 			})
 		})
 
@@ -124,6 +122,7 @@ angular
 						$rootScope.goBack();
 					}
 				} else {
+          return
 					//AUTHENTICATION CHECK
 					if (toState.authenticate !== false && !AuthService.isAuthenticated()) {
 						//auth required
@@ -220,7 +219,7 @@ angular
 			}
 			if(role === 'AUTHORIZED')
 				role = null
-			return api.auth.check({role: role})
+			return User.isAuthenticated()
 		}
 	})
 	.run(function(cfpLoadingBar, $rootScope){

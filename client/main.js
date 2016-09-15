@@ -1,7 +1,7 @@
 ;(function(){
 	var app = {};
 
-	app.DEBUG = false;
+	app.DEBUG = true;
 	app.StartTime = Date.now();
 	app.workingTime = function(){
 		return (Date.now() - app.StartTime)/1000
@@ -36,7 +36,7 @@ $script([
 		'node_modules/angular-moment/node_modules/moment/locale/ru.js',//decoupled from moment
 		'node_modules/angular-loading-bar/build/loading-bar.min.js',
 		'node_modules/angular-ui-notification/dist/angular-ui-notification.min.js',
-		'node_modules/restangular/dist/restangular.min.js',
+		'node_modules/angular-resource/angular-resource.min.js',
 		'node_modules/oclazyload/dist/ocLazyLoad.min.js',
 		'node_modules/angular-moment/angular-moment.min.js',
 		'node_modules/angular-strap/dist/angular-strap.min.js',
@@ -45,7 +45,6 @@ $script([
 		$script([
 			'node_modules/angular-permission/dist/angular-permission-ui.js',
 			'node_modules/angular-strap/dist/angular-strap.tpl.min.js',
-			'core/services/app.core.api.service.js',
       'components/services/lb-services.js',
 			'core/services/app.core.auth.interceptor.js',
 			'config/app.config.api.js',

@@ -1,28 +1,47 @@
 angular.module('registration')
     .controller('RegistrationController',
-    function RegistrationController($scope, currentUser, AuthService, STATES, $sce, $state, Notification, cfpLoadingBar) {
+    function RegistrationController($scope, AuthService, STATES, $state, Notification, cfpLoadingBar) {
+
+        $scope.user = {
+          username: '',
+          email: '',
+          password: '',
+          confirmPassword:'',
+          terms: false
+        }
 
         $scope.submit = function() {
+            $scope.$registrationForm
+            debugger
             cfpLoadingBar.start();
-            AuthService.registration(card).then(
+            AuthService.registration($scope.user).then(
                 function(resp){
                     cfpLoadingBar.complete()
-                    $state.go('root.aside.main.account', {CardID: resp.id})//card info
+                    Notification.info({
+                      title: 'Congratulations!',
+                      message: 'Registration completed'
+                    })
+
+                    $state.go(STATES.LOGINPAGE)
                 },
                 function(errResponse) {
                     cfpLoadingBar.complete()
-                    $scope.serverErrors = _.keyBy(errResponse.data, 'field')
                     if(errResponse.status === 422){
-                        angular.forEach($scope.serverErrors, function(field){
-                            Notification.error({
-                                title: 'Ошибка',
-                                message: field.message
+                        Notification.warning({
+                          title: 'Error ' + errResponse.data.error.name,
+                          message: errResponse.data.error.message
+                        })
+                        $scope.serverErrors = errResponse.data.error.details.messages;
+                        angular.forEach($scope.serverErrors, function(messages, field){
+                            Notification.warning({
+                                title: 'Error ' + field,
+                                message: messages[0]
                             })
                         })
                     } else {
                         Notification.error({
-                            title: 'Ошибка',
-                            message: errResponse.statusText
+                          title: 'Error ' + errResponse.status,
+                          message: errResponse.message ? errResponse.message : ''
                         })
                     }
                 }
@@ -36,10 +55,6 @@ angular.module('registration')
             } else {
                 return $state.go(STATES.DEFAULT)
             }
-        }
-
-        $scope.trustAsHtml = function(value) {
-            return $sce.trustAsHtml(value);
         }
 
     })

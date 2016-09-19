@@ -5,9 +5,11 @@
       <!-- Admin-panels-->
       <div class="admin-panels">
         <div class="row">
+          <!-- Chart widget-->
           <div class="col-md-12 admin-grid">
-            <div id="p01" data-panel-title="false" class="panel sort-disable">
-              <div class="panel-heading of-v br-b-n pl25 pr25"><span class="pull-sm-left">Revenue</span><span class="pull-sm-left text-muted ml10">Monthly Stats</span>
+            <div id="p1" class="panel">
+              <div class="panel-heading of-v br-b-n pl25 pr25">
+                <span class="panel-title pull-sm-left">Revenue</span><span class="pull-sm-left text-muted ml10">Monthly Stats</span>
                 <div class="mt-10 mt-sm-0 pull-sm-right veil reveal-sm-block">
                   <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="custom-dropdown btn btn-xs btn-info dropdown-toggle">Filter range<span class="caret ml15"></span></button>
@@ -19,15 +21,11 @@
                   </div>
                 </div>
               </div>
-              <div class="panel-body pn">
-                <div class="tab-content">
-                  <div role="tabpanel" class="tab-pane active p15">
-                    <!-- Chart Column-->
-                    <div class="pln">
-                      <div id="ecommerce_chart1" style="height: 350px;"></div>
-                    </div>
-                  </div>
-                </div>
+              <div class="panel-body pn bg-light">
+                <div id="high-datamap" style="width: 100%; height: 210px; margin: 0 auto"></div>
+              </div>
+              <div class="panel-footer bg-light pn">
+                <div id="high-siblingmap" style="width: 100%; height: 110px; margin: 0 auto"></div>
               </div>
             </div>
           </div>

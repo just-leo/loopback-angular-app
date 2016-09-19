@@ -2,13 +2,7 @@
 
 angular.module('header')
 	.controller('HeaderController',
-		function HeaderController(
-			$scope,
-			AuthService,
-			$state,
-			STATES,
-			cfpLoadingBar,
-			AUTH_EVENTS) {
+		function HeaderController($scope, AuthService, cfpLoadingBar) {
 
 			$scope.isAuthenticated = AuthService.isAuthenticated();
 
@@ -22,18 +16,15 @@ angular.module('header')
 				})
 			}
 
-			var offLoginEvent = $scope.$on(AUTH_EVENTS.loginSuccess, function(e){
-				$scope.isAuthenticated = true
-			})
-
-			$scope.$on('$destroy', offLoginEvent);
-
 			function logoutSuccess() {
 				$scope.isAuthenticated = false;
 				if(cfpLoadingBar.status() > 0) {
 					cfpLoadingBar.complete()
 				}
-				//$state.go(STATES.LOGINPAGE, null, {reload: true})
 			}
+
+      $scope.$on('auth.logout.success', function(e){
+        $scope.isAuthenticated = true
+      })
 		}
 	)

@@ -17,7 +17,6 @@ angular.module('login', ['ui-notification'])
         .then(
           function (result) {
             // success
-            debugger
           },
           function (errResponse) {
             debugger
@@ -25,13 +24,13 @@ angular.module('login', ['ui-notification'])
               //$scope.serverErrors = _.keyBy(errResponse.error, 'field')
               //angular.forEach($scope.serverErrors, function (field) {
                 Notification.warning({
-                  title: 'Ошибка',
+                  title: 'Error',
                   message: errResponse.data ? errResponse.data.error.message : 'Unauthorized'
                 })
               //})
             } else {
               Notification.error({
-                title: 'Ошибка ' + errResponse.status,
+                title: 'Error ' + errResponse.status,
                 message: errResponse.message ? errResponse.message : ''
               })
             }

@@ -19,6 +19,7 @@ angular.module('app.core.interceptor', ['lbServices', 'LocalStorageModule'])
 			var authService = {};
 
 			authService.init = function(data) {
+        LoopBackAuth.currentUserData
         return LoopBackAuth.currentUserData
 			}
 
@@ -28,8 +29,8 @@ angular.module('app.core.interceptor', ['lbServices', 'LocalStorageModule'])
 				User.login({ rememberMe: rememberMe }, credentials)
           .$promise.then(
             function(response){
-              $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, response);
               deferred.resolve(response);
+              $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, response.user);
             },
             function(errResponse){
               $rootScope.$broadcast(AUTH_EVENTS.loginFailed, errResponse);
@@ -46,8 +47,8 @@ angular.module('app.core.interceptor', ['lbServices', 'LocalStorageModule'])
         LoopBackAuth.clearStorage();
 				User.logout().$promise.then(
 					function(response){
+            deferred.resolve(response);
 						$rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
-						deferred.resolve(response);
 					},
 					deferred.reject
 				)
@@ -55,8 +56,17 @@ angular.module('app.core.interceptor', ['lbServices', 'LocalStorageModule'])
 				return deferred.promise
 			}
 
-			authService.isAuthenticated = function isAuthenticated(){
+      authService.registration = function(credentials) {
+        var deferred = $q.defer();
+        User.create(credentials, function(response, headers){
+          deferred.resolve(response);
+        }, deferred.reject)
 
+        return deferred.promise
+      }
+
+			authService.isAuthenticated = function isAuthenticated(){
+          return User.isAuthenticated()
 			}
 
 			authService._returnState = null;

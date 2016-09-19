@@ -52,9 +52,6 @@ angular
           resolve: {
             _loadRegModule: function($ocLazyLoad) {
               return $ocLazyLoad.load('registration')
-            },
-            currentUser: function($rootScope) {
-              return $rootScope.currentUser
             }
           },
           //onEnter: function() {
@@ -86,9 +83,6 @@ angular
           resolve: {
             _loadRegModule: function($ocLazyLoad) {
               return $ocLazyLoad.load('login')
-            },
-            currentUser: function($rootScope) {
-              return $rootScope.currentUser
             }
           },
           data: {

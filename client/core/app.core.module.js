@@ -17,7 +17,7 @@ angular
 	}])
 	.config(function(NotificationProvider) {
 		NotificationProvider.setOptions({
-			delay: 3000
+			delay: 4000
 			//startTop: 20,
 			//startRight: 10,
 			//verticalSpacing: 20,
@@ -122,7 +122,6 @@ angular
 						$rootScope.goBack();
 					}
 				} else {
-          return
 					//AUTHENTICATION CHECK
 					if (toState.authenticate !== false && !AuthService.isAuthenticated()) {
 						//auth required
@@ -137,12 +136,14 @@ angular
 			if(error.status == 404) {
 				$state.go(STATES.MAINPAGE)
 			}
+      debugger
 		})
 
 		$rootScope.currentUser = null;
-		$rootScope.isAuthorized = AuthService.isAuthorized;
+		$rootScope.isAuthenticated = AuthService.isAuthenticated;
 
 		$rootScope.setCurrentUser = function (user) {
+      debugger
 			PermPermissionStore.clearStore();
 			PermRoleStore.clearStore();
 			$rootScope.currentUser = user;
@@ -211,7 +212,7 @@ angular
 		}
 		function defaultRoleCheck(role, stateProperties) {
 			$log.debug('role check', role, stateProperties)
-      return true
+      return AuthService.isAuthenticated()
 			if($rootScope.currentUser) {
 				if(role === $rootScope.currentUser.Role) {
 					return true
@@ -219,7 +220,7 @@ angular
 			}
 			if(role === 'AUTHORIZED')
 				role = null
-			return User.isAuthenticated()
+			return AuthService.isAuthenticated()
 		}
 	})
 	.run(function(cfpLoadingBar, $rootScope){

@@ -6,7 +6,6 @@
     "url": "",
     "database": "SmartHome",
     "password": "root",
-    "name": "mysql",
     "user": "root",
     "connector": "mysql"
   }

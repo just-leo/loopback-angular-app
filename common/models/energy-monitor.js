@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(Energymonitor) {
+module.exports = function(EnergyMonitor) {
 
 };

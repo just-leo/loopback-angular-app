@@ -1,5 +1,5 @@
 {
-  "name": "deviceMetrics",
+  "name": "DeviceMetrics",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

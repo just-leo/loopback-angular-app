@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(Devicemetrics) {
+module.exports = function(DeviceMetrics) {
 
 };

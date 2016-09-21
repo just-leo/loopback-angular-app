@@ -6,12 +6,4 @@ angular
         $scope.search = function () {
 
         }
-
-        this.$data = EnergyMonitor.find({filter: {limit: 5}}).$promise.then(
-            function (result) {
-            },
-            function (error) {
-
-            }
-        )
     })

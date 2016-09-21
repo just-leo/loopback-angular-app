@@ -40,6 +40,12 @@ angular
 				'modules/default/default.module.js'
 			]
 		},
+    {
+      name: 'charts',
+      files: [
+        'modules/charts/charts.module.js'
+      ]
+    },
 		{
 			name: 'objects',
 			serie: true,
@@ -86,7 +92,17 @@ angular
 				'node_modules/angular-xeditable/dist/js/xeditable.min.js',
 				'node_modules/angular-xeditable/dist/css/xeditable.min.css'
 			]
-		}
+		},
+    {
+      name: 'highcharts-ng',
+      serie: true,
+      files: [
+        'node_modules/highcharts/highcharts.js',
+        'node_modules/highcharts-ng/dist/highcharts-ng.min.js',
+        //'node_modules/highcharts-ng/dist/lazyload.min.js'
+      ]
+
+    }
 	])
 	.config([
 		'$ocLazyLoadProvider', 'modulesToLoad', 'autoloaderDebugMode',

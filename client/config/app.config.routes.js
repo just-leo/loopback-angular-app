@@ -153,6 +153,32 @@ angular
 					pageTitle: 'Добро пожаловать',
           authenticate: true
 				})
+        .state({
+          name: 'dashboard.layout.charts',
+          url: '/charts',
+          views: {
+            'content@dashboard': {
+              templateUrl: 'modules/charts/charts.html',
+              controller: 'ChartController',
+              controllerAs: 'controller'
+            }
+          },
+          resolve: {
+            _loadDefModule: function($ocLazyLoad) {
+              return $ocLazyLoad.load('charts')
+            },
+            metrics: function(EnergyMonitor) {
+              return EnergyMonitor.find({filter: {limit: 500, order: 'event ASC'}}).$promise
+            }
+          },
+          data: {
+            permissions: {
+              only: ['dashboard.layout.charts']
+            }
+          },
+          pageTitle: 'Добро пожаловать',
+          authenticate: true
+        })
 
 				//Error page
 				.state({

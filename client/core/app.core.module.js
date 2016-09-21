@@ -143,7 +143,6 @@ angular
 		$rootScope.isAuthenticated = AuthService.isAuthenticated;
 
 		$rootScope.setCurrentUser = function (user) {
-      debugger
 			PermPermissionStore.clearStore();
 			PermRoleStore.clearStore();
 			$rootScope.currentUser = user;
@@ -179,7 +178,7 @@ angular
               'dashboard.layout',
               'dashboard.layout.default',
               'dashboard.layout.404',
-              'dashboard.layout.logs'
+              'dashboard.layout.charts'
 						], defaultPermissionCheck)
 				}
 
@@ -192,7 +191,7 @@ angular
           'dashboard.layout',
           'dashboard.layout.default',
           'dashboard.layout.404',
-          'dashboard.layout.logs'
+          'dashboard.layout.charts'
         ], defaultPermissionCheck)
 			}
 			PermRoleStore.defineRole('AUTHORIZED', defaultRoleCheck)

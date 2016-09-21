@@ -22,26 +22,23 @@
   </header>
   <ul class="nav sidebar-menu">
     <li class="sidebar-label pt20"></li>
-    <li><a href="#" class="accordion-toggle"><span class="fa fa-area-chart"></span><span class="sidebar-title">Graphics</span></a>
-      <!--<ul class="nav sub-nav">-->
-        <!--<li><a href="admin_plugins-modals.html"><span class="glyphicon glyphicon-modal-window"></span>Admin Modals</a>-->
-        <!--</li>-->
-        <!--<li><a href="admin_plugins-dock.html"><span class="glyphicon glyphicon-equalizer"></span>Admin Dock</a>-->
-        <!--</li>-->
-      <!--</ul>-->
-    </li>
-    <li><a href="#" class="accordion-toggle"><span class="fa fa-tachometer"></span><span class="sidebar-title">Gauges</span><span class="caret"></span></a>
+    <li ui-sref-active="active"><a ui-sref="dashboard.layout.charts" class="accordion-toggle"><span class="fa fa-area-chart"></span><span class="sidebar-title">Graphics</span><span class="caret"></span></a>
       <ul class="nav sub-nav">
-        <li><a href="admin_forms-widgets.html"><span class="glyphicon glyphicon-calendar"></span>Admin Widgets</a>
+        <li ui-sref-active="active"><a ui-sref="dashboard.layout.charts"><span class="glyphicon glyphicon-modal-window"></span>All</a></li>
+      </ul>
+    </li>
+    <li ui-sref-active="active"><a ui-sref="dashboard.layout.meters" class="accordion-toggle"><span class="fa fa-tachometer"></span><span class="sidebar-title">Meters</span><span class="caret"></span></a>
+      <ul class="nav sub-nav">
+        <li ui-sref-active="active"><a href="admin_forms-widgets.html"><span class="glyphicon glyphicon-calendar"></span>Admin Widgets</a>
         </li>
-        <li><a href="admin_forms-wizard.html"><span class="fa fa-clipboard"></span>Admin Wizard</a>
+        <li ui-sref-active="active"><a href="admin_forms-wizard.html"><span class="fa fa-clipboard"></span>Admin Wizard</a>
         </li>
-        <li><a href="admin_forms-validation.html"><span class="glyphicon glyphicon-check"></span>Admin Validation</a>
+        <li ui-sref-active="active"><a href="admin_forms-validation.html"><span class="glyphicon glyphicon-check"></span>Admin Validation</a>
         </li>
       </ul>
     </li>
     <li class="sidebar-label pt20"></li>
-    <li><a href="#" class="accordion-toggle"><span class="fa fa-plug"></span><span class="sidebar-title">Devices</span></a>
+    <li ui-sref-active="active"><a ui-sref="dashboard.layout.devices" class="accordion-toggle"><span class="fa fa-plug"></span><span class="sidebar-title">Devices</span></a>
       <!--<ul class="nav sub-nav">-->
         <!--<li><a href="widgets_tile.html"><span class="fa fa-arrows-h"></span>Tile Widgets</a>-->
         <!--</li>-->
@@ -53,16 +50,16 @@
         <!--</li>-->
       <!--</ul>-->
     </li>
-    <li><a href="#" class="accordion-toggle"><span class="fa fa-history"></span><span class="sidebar-title">History</span><span class="caret"></span></a>
+    <li ui-sref-active="active"><a href="#" class="accordion-toggle"><span class="fa fa-history"></span><span class="sidebar-title">History</span><span class="caret"></span></a>
       <ul class="nav sub-nav">
-        <li><a href="admin_forms-wizard.html"><span class="fa fa-clipboard"></span>Admin Wizard</a>
+        <li ui-sref-active="active"><a href="admin_forms-wizard.html"><span class="fa fa-clipboard"></span>Admin Wizard</a>
         </li>
-        <li><a href="admin_forms-validation.html"><span class="glyphicon glyphicon-check"></span>Admin Validation</a>
+        <li ui-sref-active="active"><a href="admin_forms-validation.html"><span class="glyphicon glyphicon-check"></span>Admin Validation</a>
         </li>
       </ul>
     </li>
     <li class="sidebar-label pt20"></li>
-    <li><a href="#" class="accordion-toggle"><span class="fa fa-desktop"></span><span class="sidebar-title">Dashboard</span><span class="caret"></span></a>
+    <li ui-sref-active="active"><a href="#" class="accordion-toggle"><span class="fa fa-desktop"></span><span class="sidebar-title">Dashboard</span><span class="caret"></span></a>
       <ul class="nav sub-nav">
         <li><a href="#" class="accordion-toggle"><span class="fa fa-arrows-h"></span>Sidebars<span class="caret"></span></a>
           <ul class="nav sub-nav">

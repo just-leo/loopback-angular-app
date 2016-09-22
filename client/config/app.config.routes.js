@@ -168,7 +168,8 @@ angular
               return $ocLazyLoad.load('charts')
             },
             metrics: function(EnergyMonitor) {
-              return EnergyMonitor.find({filter: {limit: 500, order: 'event ASC'}}).$promise
+              var event = moment().subtract(6, 'months').hours(0).minutes(0).seconds(0).format('YYYY-MM-DD');
+              return EnergyMonitor.find({filter: {limit: 5000, order: 'event', where: {event: {gt: event}}}}).$promise
             }
           },
           data: {

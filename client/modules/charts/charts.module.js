@@ -8,7 +8,7 @@ angular
             zoomType: 'xy',
           },
           title: {
-            text: 'Voltage'
+            text: ''
           },
           xAxis: {
             type: 'datetime',
@@ -46,7 +46,7 @@ angular
             zoomType: 'x',
           },
           title: {
-            text: 'Current'
+            text: ''
           },
           xAxis: {
             type: 'datetime',
@@ -84,7 +84,7 @@ angular
             zoomType: 'x',
           },
           title: {
-            text: 'Power'
+            text: ''
           },
           xAxis: {
             type: 'datetime',
@@ -121,7 +121,7 @@ angular
             zoomType: 'x',
           },
           title: {
-            text: 'Power/Hour'
+            text: ''//'Power/Hour'
           },
           xAxis: {
             type: 'datetime',

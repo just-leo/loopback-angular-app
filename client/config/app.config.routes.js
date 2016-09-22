@@ -167,9 +167,9 @@ angular
             _loadDefModule: function($ocLazyLoad) {
               return $ocLazyLoad.load('charts')
             },
-            metrics: function(EnergyMonitor) {
+            metrics: function(DeviceMetrics) {
               var event = moment().subtract(6, 'months').hours(0).minutes(0).seconds(0).format('YYYY-MM-DD');
-              return EnergyMonitor.find({filter: {limit: 5000, order: 'event', where: {event: {gt: event}}}}).$promise
+              return DeviceMetrics.find({filter: {limit: 5000, order: 'createdAt', where: {createdAt: {gt: event}}}}).$promise
             }
           },
           data: {

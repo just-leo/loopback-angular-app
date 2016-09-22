@@ -37,7 +37,7 @@ angular
           name: 'Voltage',
           type: 'area',
           data: metrics.map(function(row){
-            return [new Date(row.event).getTime(), parseFloat(row.pmv)]
+            return [row.createdAt * 1000, parseFloat(row.pmv)]
           })
         })
 
@@ -74,7 +74,7 @@ angular
           name: 'Current',
           type: 'area',
           data: metrics.map(function(row){
-            return [new Date(row.event).getTime(), parseFloat(row.pmc)]
+            return [row.createdAt * 1000, parseFloat(row.pmc)]
           })
         })
 
@@ -112,7 +112,7 @@ angular
           name: 'Power',
           type: 'area',
           data: metrics.map(function(row){
-            return [new Date(row.event).getTime(), parseFloat(row.pmw)]
+            return [row.createdAt * 1000, parseFloat(row.pmw)]
           })
         })
 
@@ -149,7 +149,7 @@ angular
           name: 'Power/Hour',
           type: 'area',
           data: metrics.map(function(row){
-            return [new Date(row.event).getTime(), parseFloat(row.pmwh)]
+            return [row.createdAt * 1000, parseFloat(row.pmwh)]
           })
         })
     })

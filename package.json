@@ -17,7 +17,9 @@
     "loopback-connector-mysql": "^2.3.0",
     "loopback-datasource-juggler": "^2.39.0",
     "serve-favicon": "^2.0.1",
-    "strong-error-handler": "^1.0.1"
+    "strong-error-handler": "^1.0.1",
+    "strong-pubsub": "^0.2.0",
+    "strong-pubsub-mqtt": "^0.1.0"
   },
   "devDependencies": {
     "eslint": "^2.13.1",

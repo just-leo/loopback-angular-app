@@ -22,7 +22,7 @@ module.exports = function(app) {
           console.log(err)
           res.send(500, 'Error when saving');
         } else {
-          console.log(row)
+          console.log('OK')
           res.send('Data successfully saved');
         }
       })

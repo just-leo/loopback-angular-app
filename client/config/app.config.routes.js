@@ -41,7 +41,7 @@ angular
         .state({
           name: 'external.layout.registration',
           url: '/registration',
-					pageTitle: 'Регистрация',
+					pageTitle: 'Sign Up',
           views: {
             'content@external': {
               templateUrl: 'modules/registration/registration.html',
@@ -72,7 +72,7 @@ angular
         .state({
           name: 'external.layout.login',
           url: '/login',
-          pageTitle: 'Логин',
+          pageTitle: 'Log In',
           views: {
             'content@external': {
               templateUrl: 'modules/login/login.html',
@@ -120,7 +120,6 @@ angular
               return $ocLazyLoad.load('header')
             }
           },
-          pageTitle: 'Главная страница',
           onEnter: function($rootScope) {
             var hide = $rootScope.$on('$viewContentAnimationEnded', function() {
               hide()
@@ -150,9 +149,32 @@ angular
               only: ['dashboard.layout.default']
             }
           },
-					pageTitle: 'Добро пожаловать',
+					pageTitle: 'Main',
           authenticate: true
 				})
+        .state({
+          name: 'dashboard.layout.device',
+          url: '/device',
+          views: {
+            'content@dashboard': {
+              templateUrl: 'modules/device/device.html',
+              controller: 'DeviceController',
+              controllerAs: 'controller'
+            }
+          },
+          resolve: {
+            _loadDeviceModule: function($ocLazyLoad) {
+              return $ocLazyLoad.load('device')
+            },
+          },
+          data: {
+            permissions: {
+              only: ['dashboard.layout.device']
+            }
+          },
+          pageTitle: 'Device',
+          authenticate: true
+        })
         .state({
           name: 'dashboard.layout.charts',
           url: '/charts',
@@ -164,12 +186,11 @@ angular
             }
           },
           resolve: {
-            _loadDefModule: function($ocLazyLoad) {
+            _loadChartsModule: function($ocLazyLoad) {
               return $ocLazyLoad.load('charts')
             },
-            metrics: function(DeviceMetrics) {
-              var event = moment().subtract(6, 'months').hours(0).minutes(0).seconds(0).format('YYYY-MM-DD');
-              return DeviceMetrics.find({filter: {limit: 5000, order: 'createdAt', where: {createdAt: {gt: event}}}}).$promise
+            deviceId: function() {
+              return 'ESP0005E27B'
             }
           },
           data: {
@@ -177,7 +198,7 @@ angular
               only: ['dashboard.layout.charts']
             }
           },
-          pageTitle: 'Добро пожаловать',
+          pageTitle: 'Charts',
           authenticate: true
         })
 
@@ -185,7 +206,7 @@ angular
 				.state({
 					name: 'dashboard.layout.404',
 					url: '/404',
-					pageTitle: 'Страница не найдена',
+					pageTitle: 'Page not found',
 					views: {
             content: {
 							templateUrl: 'layouts/404.html'
@@ -196,7 +217,7 @@ angular
 				.state({
 					name: 'dashboard.layout.logs',
 					url: '/logs',
-					pageTitle: 'Системный журнал',
+					pageTitle: 'Logs',
 					data: {
 						permissions: {
 							only: ['dashboard.layout.logs']

@@ -1,11 +1,11 @@
 <div class="navbar-branding"><a href="/" class="navbar-brand">EnergyMonitor</a><span id="toggle_sidemenu_l" class="fa fa-bars"></span></div>
 <ul class="nav navbar-nav navbar-left">
-  <li class="header-link active"><a href="/">Dashboard</a></li>
-  <li class="header-link veil reveal-xs-block"><a href="/documentation">Documentation</a></li>
+  <li class="header-link active" ui-sref-active="active" ng-class="{active: $state.includes('dashboard.layout.**')}"><a ui-sref="dashboard.layout.default"><span class="fa fa-fw fa-desktop"></span> Dashboard</a></li>
+  <li class="header-link veil reveal-xs-block" ui-sref-active="active"><a ui-sref="dashboard.layout.device"><span class="fa fa-fw fa-plug"></span> Device</a></li>
   <li class="navbar-search">
     <form role="search" class="navbar-form navbar-left navbar-search alt">
       <div class="form-group"><span class="icon fa fa-search"></span>
-        <input type="text" placeholder="Search..." class="form-control" ng-model="query" ng-change="search()">
+        <input type="text" placeholder="Search..." class="form-control" ng-model="query" ng-change="search()" disabled="disabled">
       </div>
     </form>
     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="veil reveal-md-block btn btn-info dropdown-toggle">EN <span class="caret caret-tp"></span></a>

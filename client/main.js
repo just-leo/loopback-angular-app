@@ -40,6 +40,7 @@ $script([
 		'node_modules/oclazyload/dist/ocLazyLoad.min.js',
 		'node_modules/angular-moment/angular-moment.min.js',
 		'node_modules/angular-strap/dist/angular-strap.min.js',
+    'node_modules/angular-breadcrumb/dist/angular-breadcrumb.min.js'
 	], 'modules', function() {
 
 		$script([

@@ -1,0 +1,7 @@
+<ol class="breadcrumb">
+  <li class="crumb-icon"><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+  <li ng-repeat="step in steps" class="crumb" ng-class="{'crumb-active': $last, 'crumb-link': !$last}" ng-switch="$last || !!step.abstract">
+    <a ng-switch-when="false" href="{{step.ncyBreadcrumbLink}}">{{step.ncyBreadcrumbLabel}}</a>
+    <a ng-switch-when="true" href="{{step.ncyBreadcrumbLink}}" ng-click="$event.preventDefault()">{{step.ncyBreadcrumbLabel}}</a>
+  </li>
+</ol>

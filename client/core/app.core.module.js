@@ -9,6 +9,7 @@ angular
 		'ui-notification',
 		'angularMoment',
 		'mgcrea.ngStrap.modal',//only modal
+    'ncy-angular-breadcrumb'
 	])
 	.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
 		cfpLoadingBarProvider.includeBar = true;
@@ -39,6 +40,15 @@ angular
 	.config(['$animateProvider', function ($animateProvider) {
 		$animateProvider.classNameFilter(/^(?:(?!ng-animate-disabled).)*$/);
 	}])
+  .config(function($breadcrumbProvider) {
+    $breadcrumbProvider.setOptions({
+      includeAbstract: true,
+      //prefixStateName: 'home',
+      //template: 'bootstrap3',
+      //templateLast: '<i ng-bind-html="ncyBreadcrumbLabel"></i>',
+      templateUrl: 'layouts/breadcrumbs.html'
+    });
+  })
 	.run(['$animate', function($animate) {
 		$animate.enabled(true)
 	}])
@@ -136,7 +146,7 @@ angular
 			if(error.status == 404) {
 				$state.go(STATES.MAINPAGE)
 			}
-      debugger
+      console.warn(error)
 		})
 
 		$rootScope.currentUser = null;
@@ -178,7 +188,8 @@ angular
               'dashboard.layout',
               'dashboard.layout.default',
               'dashboard.layout.404',
-              'dashboard.layout.charts'
+              'dashboard.layout.charts',
+              'dashboard.layout.device'
 						], defaultPermissionCheck)
 				}
 
@@ -191,7 +202,8 @@ angular
           'dashboard.layout',
           'dashboard.layout.default',
           'dashboard.layout.404',
-          'dashboard.layout.charts'
+          'dashboard.layout.charts',
+          'dashboard.layout.device'
         ], defaultPermissionCheck)
 			}
 			PermRoleStore.defineRole('AUTHORIZED', defaultRoleCheck)

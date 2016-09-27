@@ -95,7 +95,10 @@ angular
 				.state({
 					name: 'dashboard',
 					abstract: true,
-          templateUrl: 'layouts/dashboard.html'
+          templateUrl: 'layouts/dashboard.html',
+          ncyBreadcrumb: {
+            skip: true
+          }
 				})
         .state({
           name: 'dashboard.layout',
@@ -127,6 +130,9 @@ angular
                 Core.init();
               })
             })
+          },
+          ncyBreadcrumb: {
+            label: 'Dashboard'
           }
         })
         .state({
@@ -150,6 +156,9 @@ angular
             }
           },
 					pageTitle: 'Main',
+          ncyBreadcrumb: {
+            skip: true
+          },
           authenticate: true
 				})
         .state({
@@ -173,6 +182,9 @@ angular
             }
           },
           pageTitle: 'Device',
+          ncyBreadcrumb: {
+            label: 'Device'
+          },
           authenticate: true
         })
         .state({
@@ -199,6 +211,9 @@ angular
             }
           },
           pageTitle: 'Charts',
+          ncyBreadcrumb: {
+            label: 'Charts'
+          },
           authenticate: true
         })
 
@@ -212,6 +227,9 @@ angular
 							templateUrl: 'layouts/404.html'
 						}
 					},
+          ncyBreadcrumb: {
+            label: 'Error'
+          },
 					authenticate: true
 				})
 				.state({

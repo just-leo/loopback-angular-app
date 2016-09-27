@@ -41,6 +41,12 @@ angular
 			]
 		},
     {
+      name: 'device',
+      files: [
+        'modules/device/device.module.js'
+      ]
+    },
+    {
       name: 'charts',
       files: [
         'modules/charts/charts.module.js'

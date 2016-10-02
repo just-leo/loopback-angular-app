@@ -20,10 +20,27 @@ app.start = function() {
   });
 };
 
+// use loopback.context on all routes
+app.use(loopback.context());
+
 //To use cookies for authentication
-//app.use(loopback.token({ model: app.models.accessToken }));
 //To allow the current logged in user id for REST APIs
-//app.use(loopback.token({ model: app.models.accessToken, currentUserLiteral: 'me' }));
+app.use(loopback.token({ model: app.models.AccessToken, currentUserLiteral: 'me' }));
+
+//Remember current user Id per request
+app.use(function setCurrentUser(req, res, next) {
+  if (!req.accessToken) {
+    return next();
+  }
+    var loopbackContext = loopback.getCurrentContext();
+    if (loopbackContext) {
+      loopbackContext.set('currentUserId', req.accessToken.userId);
+      //console.log('Set user id', req.accessToken.userId)
+    } else {
+      //console.log('Can not set user id', req.accessToken.userId)
+    }
+    next();
+});
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.

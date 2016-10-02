@@ -36,11 +36,7 @@
     "dataSource": "db",
     "public": true
   },
-  "EnergyMonitor": {
-    "dataSource": "db",
-    "public": true
-  },
-  "Account": {
+  "UserDevices": {
     "dataSource": "db",
     "public": true
   }

@@ -205,7 +205,7 @@ angular
               return $ocLazyLoad.load('charts')
             },
             device: function(UserDevices, $stateParams) {
-              return UserDevices.findById({id: $stateParams.deviceId})
+              return UserDevices.findById({id: $stateParams.deviceId}).$promise
               //debugger
               //return UserDevices.findOne({filter: {where: {id: $stateParams.deviceId}}}).$promise
             }

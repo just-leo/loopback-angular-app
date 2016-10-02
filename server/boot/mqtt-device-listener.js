@@ -47,7 +47,7 @@ module.exports = function(app) {
         }
         tempBbuffer[deviceId][attribute] = data
         if (tempBbuffer[deviceId].pmv && tempBbuffer[deviceId].pmc && tempBbuffer[deviceId].pmw && tempBbuffer[deviceId].pmwh) {
-          console.log(new Date, deviceId, tempBbuffer[deviceId])
+          //console.log(new Date, deviceId, tempBbuffer[deviceId])
           var attributes = tempBbuffer[deviceId]
           tempBbuffer[deviceId] = {}
 
@@ -58,15 +58,21 @@ module.exports = function(app) {
             if (err) {
               console.log(new Date, err)
             } else {
-              console.log(new Date, attributes.deviceId, 'string values')
+              //console.log(new Date, attributes.deviceId, 'string')
             }
           })
         }
       } else if(attribute === 'json') {
         //expected something like this json:
         //json {"system":{"hostname":"ESP0008F03F","uptime":38740,"rssi":-82,"freemem":23032},"sensors":{"pmv":234.7,"pmc":1.28,"pmw":173,"pmwh":6884}}
-        var data = JSON.parse(msg)
-        console.log(new Date, data.system.hostname, data.sensors)
+
+        try {
+          var data = JSON.parse(msg)
+        } catch (e) {
+          console.log('json parse error', msg)
+          return
+        }
+        //console.log(new Date, data.system.hostname, data.sensors)
 
         var attributes = data.sensors
         attributes.deviceId = data.system ? data.system.hostname : deviceId;
@@ -76,7 +82,7 @@ module.exports = function(app) {
           if (err) {
             console.log(new Date, err)
           } else {
-            console.log(new Date, attributes.deviceId, 'json')
+            //console.log(new Date, attributes.deviceId, 'json')
           }
         })
       }

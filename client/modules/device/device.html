@@ -1,0 +1,47 @@
+<div class="tray tray-center">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel admin-form" ng-if="controller.loading || controller.userDevices.length > 0">
+        <div class="panel-heading"><span class="panel-title">Available device</span></div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12" ng-repeat="device in controller.userDevices">
+              <div class="pull-left">
+                <h2 class="lh10 mt10"> Device: <a ui-sref="dashboard.layout.charts({deviceId: device.id})">{{device.deviceId}}</a></h2>
+                <h5 class="mn">Status: <b class="text-success"><i class="fa fa-circle" aria-hidden="true"></i></b></h5>
+                <h5 class="mn"> Created: {{device.created|amFromUnix|amCalendar}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12">
+      <div class="panel admin-form" ng-if="!controller.loading && controller.userDevices.length == 0">
+        <form role="form" class="form-horizontal" name="$deviceForm" ng-submit="controller.save($deviceForm)" novalidate>
+          <div class="panel-heading"><span class="panel-title">Add your device</span></div>
+          <div class="panel-body p25">
+            <div class="form-group" ng-class="{'has-error': $deviceForm.deviceId.$touched && $deviceForm.deviceId.$invalid}">
+              <div class="col-md-offset-2 col-xs-offset-2 col-xs-8 col-md-8 mt-md-0 mt-10">
+                <label for="deviceId" class="field prepend-icon"
+                       ng-class="{'state-error': $deviceForm.deviceId.$touched && ($deviceForm.deviceId.$invalid || serverValidationErrors.messages), 'state-success': $deviceForm.deviceId.$touched && $deviceForm.deviceId.$valid && !serverValidationErrors.messages}">
+                  <input id="deviceId" type="text" name="deviceId" placeholder="Input your device ID..."
+                         class="gui-input" ng-required="true" ng-model="newDevice.deviceId">
+                  <label for="deviceId" class="field-icon"><i class="fa fa-tablet"></i></label>
+                </label>
+                <em for="deviceId" class="state-error"
+                    ng-if="$deviceForm.deviceId.$touched && $deviceForm.deviceId.$error.required">Please fill device id</em>
+                <em for="deviceId" class="state-error"
+                    ng-if="serverValidationErrors.messages.deviceId">{{serverValidationErrors.messages.deviceId[0]}}</em>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer text-right">
+            <button type="submit" class="button btn-primary" ng-disabled="">Submit</button>
+            <button type="reset" class="button btn-primary" ng-disabled="$deviceForm.$submitted">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

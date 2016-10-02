@@ -175,6 +175,9 @@ angular
             _loadDeviceModule: function($ocLazyLoad) {
               return $ocLazyLoad.load('device')
             },
+            currentUserId: function(LoopBackAuth) {
+              return LoopBackAuth.currentUserId
+            }
           },
           data: {
             permissions: {
@@ -189,7 +192,7 @@ angular
         })
         .state({
           name: 'dashboard.layout.charts',
-          url: '/charts',
+          url: '/charts/{deviceId}',
           views: {
             'content@dashboard': {
               templateUrl: 'modules/charts/charts.html',
@@ -201,8 +204,10 @@ angular
             _loadChartsModule: function($ocLazyLoad) {
               return $ocLazyLoad.load('charts')
             },
-            deviceId: function() {
-              return 'ESP0005E27B'
+            device: function(UserDevices, $stateParams) {
+              return UserDevices.findById({id: $stateParams.deviceId})
+              //debugger
+              //return UserDevices.findOne({filter: {where: {id: $stateParams.deviceId}}}).$promise
             }
           },
           data: {
@@ -212,11 +217,10 @@ angular
           },
           pageTitle: 'Charts',
           ncyBreadcrumb: {
-            label: 'Charts'
+            label: 'Charts {{device.deviceId}}'
           },
           authenticate: true
         })
-
 				//Error page
 				.state({
 					name: 'dashboard.layout.404',

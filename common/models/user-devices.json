@@ -1,34 +1,27 @@
 {
-  "name": "EnergyMonitor",
+  "name": "UserDevices",
+  "plural": "UserDevice",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "id": {
+    "userId": {
+      "type": "number",
+      "required": true
+    },
+    "deviceId": {
       "type": "string",
       "required": true
     },
-    "event": {
-      "type": "date",
-      "required": true
-    },
-    "pmv": {
+    "created": {
       "type": "number",
       "required": true
     },
-    "pmc": {
+    "modified": {
       "type": "number",
-      "required": true
-    },
-    "pmw": {
-      "type": "number",
-      "required": true
-    },
-    "pmwh": {
-      "type": "number",
-      "required": true
+      "default": 0
     }
   },
   "validations": [],

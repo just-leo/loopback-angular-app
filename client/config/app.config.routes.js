@@ -7,8 +7,8 @@ angular
 	.constant('STATES', {
 		LOGINPAGE: 'external.layout.login',
 		REGISTRATION: 'external.layout.registration',
-		DEFAULT: 'dashboard.layout.default',
-		MAINPAGE: 'dashboard.layout.default',
+		DEFAULT: 'dashboard.layout.charts',
+		MAINPAGE: 'dashboard.layout.charts',
 		ERROR_NOTFOUND: 'dashboard.layout.404'
 	})
 	.config([
@@ -184,7 +184,7 @@ angular
               only: ['dashboard.layout.device']
             }
           },
-          pageTitle: 'Device',
+          pageTitle: 'Your device',
           ncyBreadcrumb: {
             label: 'Device'
           },
@@ -204,10 +204,29 @@ angular
             _loadChartsModule: function($ocLazyLoad) {
               return $ocLazyLoad.load('charts')
             },
-            device: function(UserDevices, $stateParams) {
-              return UserDevices.findById({id: $stateParams.deviceId}).$promise
+            device: function(UserDevices, User, $stateParams) {
+              if($stateParams.deviceId)
+                return UserDevices.findOne({filter: {where: {id: $stateParams.deviceId, userId: User.getCurrentId()}}}).$promise
               //debugger
-              //return UserDevices.findOne({filter: {where: {id: $stateParams.deviceId}}}).$promise
+              return UserDevices.findOne({filter: {where: {userId: User.getCurrentId()}}}).$promise
+            }
+          },
+          onEnter: function(device, $state, $stateParams, Notification) {
+            if(!$stateParams.deviceId && !device) {
+              Notification.warning({message: 'Please, add your device', delay: 6000, positionX: 'center'}).then(
+                function () {
+                  $state.go('dashboard.layout.device')
+                }
+              )
+            } else if(!$stateParams.deviceId && device) {
+              $stateParams.deviceId = device.id
+              $state.params.deviceId = device.id
+            } else if(!device) {
+              Notification.warning({message: 'Device not found', delay: 6000, positionX: 'center'}).then(
+                function () {
+                  $state.go('dashboard.layout.device')
+                }
+              )
             }
           },
           data: {

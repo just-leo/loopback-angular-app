@@ -144,7 +144,7 @@ angular
 
 		$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
 			if(error.status == 404) {
-				$state.go(STATES.MAINPAGE)
+				$state.go(STATES.ERROR_NOTFOUND)
 			}
       console.warn(error)
 		})

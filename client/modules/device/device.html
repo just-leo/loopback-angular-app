@@ -25,7 +25,7 @@
               <div class="col-md-offset-2 col-xs-offset-2 col-xs-8 col-md-8 mt-md-0 mt-10">
                 <label for="deviceId" class="field prepend-icon"
                        ng-class="{'state-error': $deviceForm.deviceId.$touched && ($deviceForm.deviceId.$invalid || serverValidationErrors.messages), 'state-success': $deviceForm.deviceId.$touched && $deviceForm.deviceId.$valid && !serverValidationErrors.messages}">
-                  <input id="deviceId" type="text" name="deviceId" placeholder="Input your device ID..."
+                  <input id="deviceId" type="text" name="deviceId" placeholder="Input your device ID...(for ex. ESP0007AB2D)"
                          class="gui-input" ng-required="true" ng-model="newDevice.deviceId">
                   <label for="deviceId" class="field-icon"><i class="fa fa-tablet"></i></label>
                 </label>

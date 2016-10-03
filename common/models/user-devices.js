@@ -16,7 +16,7 @@ module.exports = function(UserDevices) {
     //console.log('UserID', getCurrentUserId())
     UserDevices.create({
       userId: getCurrentUserId(),
-      deviceId: deviceId,
+      deviceId: deviceId.toUpperCase(),
       created: Date.now()/1000,
       modified: Date.now()/1000
     }, cb)
@@ -40,5 +40,5 @@ module.exports = function(UserDevices) {
       if(err || !instance) error()
       done()
     })
-  }, {message:'Device doesn\'t exists'})
+  }, {message:'Device doesn\'t registered'})
 };

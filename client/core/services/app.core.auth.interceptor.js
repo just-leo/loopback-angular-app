@@ -18,9 +18,10 @@ angular.module('app.core.interceptor', ['lbServices', 'LocalStorageModule'])
 
 			var authService = {};
 
-			authService.init = function(data) {
-        LoopBackAuth.currentUserData
-        return LoopBackAuth.currentUserData
+			authService.init = function() {
+          if(LoopBackAuth.currentUserData)
+            return LoopBackAuth.currentUserData
+          return User.getCurrent()
 			}
 
 			authService.login = function login(credentials, rememberMe) {

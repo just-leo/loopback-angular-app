@@ -10,6 +10,8 @@ angular.module('registration')
           terms: false
         }
 
+        $scope.serverValidationErrors = {}
+
         $scope.submit = function() {
             $scope.$registrationForm
             debugger
@@ -25,6 +27,7 @@ angular.module('registration')
                     $state.go(STATES.LOGINPAGE)
                 },
                 function(errResponse) {
+                    $scope.serverValidationErrors = errResponse.data.error.details
                     cfpLoadingBar.complete()
                     if(errResponse.status === 422){
                         Notification.warning({

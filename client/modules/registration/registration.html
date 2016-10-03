@@ -15,14 +15,19 @@
         <div class="col-sm-4"><a href="#" class="button btn-social googleplus span-left btn-block"><span><i class="fa fa-google-plus"></i></span>Google+</a></div>
       </div>
     </div>
-    <form id="account2" method="post" name="$registrationForm" ng-submit="submit()">
+    <form id="account2" method="post" name="$registrationForm" ng-submit="submit()" novalidate>
       <div class="panel-body p25 bg-light">
         <div class="section-divider mt10 mb40"><span>Set up your account</span></div>
         <div class="section">
-          <label for="email" class="field prepend-icon">
+          <label for="username" class="field prepend-icon"
+                 ng-class="{'state-error': $registrationForm.username.$touched && ($registrationForm.username.$invalid || serverValidationErrors.messages.username), 'state-success': $registrationForm.username.$touched && $registrationForm.username.$valid && !serverValidationErrors.messages.username}">
             <input id="username" type="text" name="username" placeholder="Username" class="gui-input" ng-model="user.username">
             <label for="username" class="field-icon"><i class="fa fa-user"></i></label>
           </label>
+          <em for="username" class="state-error"
+              ng-if="serverValidationErrors.messages.username">{{serverValidationErrors.messages.username[0]}}</em>
+          <em for="username" class="state-error"
+              ng-if="$registrationForm.username.$touched && $registrationForm.username.$error.required">Username required</em>
         </div>
         <!-- .section-divider-->
         <!--<div class="section row">-->
@@ -40,22 +45,33 @@
           <!--</div>-->
         <!--</div>-->
         <div class="section">
-          <label for="email" class="field prepend-icon">
+          <label for="email" class="field prepend-icon"
+                 ng-class="{'state-error': $registrationForm.email.$touched && ($registrationForm.email.$invalid || serverValidationErrors.messages.email), 'state-success': $registrationForm.email.$touched && $registrationForm.email.$valid && !serverValidationErrors.messages.email}">
             <input id="email" type="email" name="email" placeholder="Email address" class="gui-input" ng-model="user.email" ng-required="true">
             <label for="email" class="field-icon"><i class="fa fa-envelope"></i></label>
           </label>
+          <em for="email" class="state-error"
+              ng-if="serverValidationErrors.messages.email">{{serverValidationErrors.messages.email[0]}}</em>
+          <em for="email" class="state-error"
+              ng-if="$registrationForm.email.$touched && $registrationForm.email.$error.required">Email required</em>
         </div>
         <div class="section">
           <label for="password" class="field prepend-icon">
             <input id="password" type="password" name="password" placeholder="Create a password" class="gui-input" ng-model="user.password" ng-required="true">
             <label for="password" class="field-icon"><i class="fa fa-unlock-alt"></i></label>
           </label>
+          <em for="password" class="state-error"
+              ng-if="serverValidationErrors.messages.password">{{serverValidationErrors.messages.password[0]}}</em>
+          <em for="password" class="state-error"
+              ng-if="$registrationForm.password.$touched && $registrationForm.password.$error.required">Password required</em>
         </div>
         <div class="section">
           <label for="confirmPassword" class="field prepend-icon">
             <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Retype your password" class="gui-input" ng-model="user.confirmPassword" ng-required="true">
             <label for="confirmPassword" class="field-icon"><i class="fa fa-lock"></i></label>
           </label>
+          <em for="confirmPassword" class="state-error"
+              ng-if="$registrationForm.password.$touched && user.confirmPassword !== user.password">Passwords does not match</em>
         </div>
         <div class="section-divider mv40"><span>Review the Terms</span></div>
         <!-- .section-divider-->

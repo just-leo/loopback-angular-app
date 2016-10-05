@@ -74,7 +74,12 @@ angular
     ])
     .constant('autoUpdateChartInterval', 300000)
     .controller('ChartController', function DefaultController($scope, Notification, $state, DeviceMetrics, device, ChartOptionsFactory, rangeOptions, $interval, autoUpdateChartInterval) {
-
+        Highcharts.setOptions({
+          global: {
+            useUTC: false
+            //timezoneOffset: 180
+          }
+        })
         $scope.device = device
 
         this.selectedRangeValue = rangeOptions[0].value
@@ -187,7 +192,11 @@ angular
             })
           }
 
-          self.loadingToggle(false)
+          if(!metrics || metrics.length === 0){
+            self.chartVoltageConfig.noData = self.chartCurrentConfig.noData = self.chartPowerConfig.noData = self.chartPowerHourConfig.noData = true
+          } else {
+            self.loadingToggle(false)
+          }
         }
 
         //Let's Start

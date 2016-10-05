@@ -28,6 +28,7 @@ angular
         }
 
         this.save = function($form) {
+          $scope.serverValidationErrors = {}
           if($form.$invalid) {
             return
           }

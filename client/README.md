@@ -6,6 +6,9 @@
 
 ### Install Dependencies
 
+```
+npm install
+```
 
 ### Run the Application
 
@@ -26,7 +29,7 @@ app/                    --> all of the source files for the application
   assets/
     css/                --> default stylesheet
     img/                --> images used in templates
-    video/              --> video for welcome page etc
+    js/                 --> js plugins used in templates
   components/           --> all app specific modules
     version/              --> version related components
       version.js                 --> version module declaration and basic "version" value service
@@ -35,10 +38,10 @@ app/                    --> all of the source files for the application
       version-directive_test.js  --> version directive tests
       interpolate-filter.js      --> custom interpolation filter
       interpolate-filter_test.js --> interpolate filter tests
-    card-swipe/                  --> module that listen to swipe
     cron/                        --> component that implement ui for cron format control
     directives/                  --> all useful directives
-  config/               --> app related configs: router config, autoloader config, api endpoints, default configuration for common components
+    services/                   --> the place for LB-service and others common services
+  config/                       --> app related configs: router config, autoloader config, api endpoints, default configuration for common components
   core/
     services/           --> api service, main interceptor for common responses and others
     app.core.module.js  --> main application module
@@ -101,25 +104,6 @@ can interact with it.
 ```
 npm start
 ```
-
-In addition, since Protractor is built upon WebDriver we need to install this.  The angular-seed
-project comes with a predefined script to do this:
-
-```
-npm run update-webdriver
-```
-
-This will download and install the latest version of the stand-alone WebDriver tool.
-
-Once you have ensured that the development web server hosting our application is up and running
-and WebDriver is updated, you can run the end-to-end tests using the supplied npm script:
-
-```
-npm run protractor
-```
-
-This script will execute the end-to-end tests against the application being hosted on the
-development server.
 
 ## Serving the Application Files
 
@@ -220,6 +204,3 @@ Example of form validation on client side combined with serverside errors
         <button class="btn-reset btn-form" type="submit" ng-disabled="profileForm.$invalid">сохранить</button>
     </div>
 </form>
-
-### Good-styled keyboard
-http://alvarowolfx.github.io/ng-keypad

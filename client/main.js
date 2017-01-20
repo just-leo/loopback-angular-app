@@ -1,12 +1,12 @@
 ;(function(){
 	var app = {};
 
-	app.DEBUG = true;
+	app.DEBUG = false;
 	app.StartTime = Date.now();
 	app.workingTime = function(){
 		return (Date.now() - app.StartTime)/1000
 	};
-	app.version = '0.0.0-crashbang';
+	app.version = '0.0.1-device';
 
 	if(console.info){
 		console.info(app.version)
